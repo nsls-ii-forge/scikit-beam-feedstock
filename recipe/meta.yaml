@@ -1,0 +1,76 @@
+{% set version = "0.0.15" %}
+{% set sha256 = "5f5b29427808567212080bc725b98e6698acfad2bec7b7bf82c6fe3681b5b2f0" %}
+
+package:
+  name: scikit-beam
+  version: {{ version }}
+
+source:
+  url: https://github.com/scikit-beam/scikit-beam/archive/v{{ version }}.tar.gz
+  fn: scikit-beam-v{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+  patches:
+    # REMOVE THIS AFTER 0.0.15
+    - setup.py.patch
+    - include_license.patch
+
+build:
+  number: 0
+  skip: true  # [py<36]
+  script:
+    - python setup.py build_ext -i
+    - python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  build:
+    - autoconf  # [osx]
+    - {{ compiler('c') }}
+  host:
+    - python
+    - cython
+    - numpy
+    - setuptools
+    - six
+  run:
+    - python
+    - lmfit =0.8.3
+    - scikit-image
+    - scipy
+    - six
+    - xraylib
+    - {{ pin_compatible('numpy') }}
+
+test:
+  imports:
+    - skbeam
+    - skbeam.io
+    - skbeam.core
+    - skbeam.core.accumulators
+    - skbeam.core.constants
+    - skbeam.core.fitting
+    - skbeam.core.fitting.base
+    - skbeam.ext
+    - skbeam.core.fitting
+    - skbeam.core.constants.xrf
+    # has linux native library imports  # [not win]
+    - skbeam.ext.ctrans  # [not win]
+  commands:
+    # Don't need to specify path due to the CONDA_DEFAULT_ENV env var being set inside of conda-build
+    # which is pointing to the test environment
+    # These next two lines are currently failing due to an API change from conda-build 1.21.* -> 2.0.*
+    #- conda inspect linkages scikit-beam  # [not win]
+    #- conda inspect objects scikit-beam  # [osx]
+
+about:
+  home: http://scikit-beam.github.io/scikit-beam/
+  license: BSD 3-Clause
+  summary: Data analysis algorithms for X-Ray, Neutron and Electron sciences
+  license_file: LICENSE
+  license_family: BSD
+
+extra:
+  recipe-maintainers:
+    - ericdill
+    - licode
+    - tacaswell
+    - CJ-Wright
