@@ -53,12 +53,6 @@ test:
     - skbeam.core.constants.xrf
     # has linux native library imports  # [not win]
     - skbeam.ext.ctrans  # [not win]
-  commands:
-    # Don't need to specify path due to the CONDA_DEFAULT_ENV env var being set inside of conda-build
-    # which is pointing to the test environment
-    # These next two lines are currently failing due to an API change from conda-build 1.21.* -> 2.0.*
-    #- conda inspect linkages scikit-beam  # [not win]
-    #- conda inspect objects scikit-beam  # [osx]
 
 about:
   home: http://scikit-beam.github.io/scikit-beam
