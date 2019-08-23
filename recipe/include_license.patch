@@ -1,9 +1,0 @@
-diff --git a/MANIFEST.in b/MANIFEST.in
-index 33abd82..d6ebb18 100644
---- a/MANIFEST.in
-+++ b/MANIFEST.in
-@@ -2,3 +2,4 @@ include versioneer.py
- include skbeam/_version.py
- include requirements.txt
- include optional-requirements.txt
-+include LICENSE
