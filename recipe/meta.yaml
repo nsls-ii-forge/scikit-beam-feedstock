@@ -1,18 +1,15 @@
-{% set version = "0.0.15" %}
-{% set sha256 = "5f5b29427808567212080bc725b98e6698acfad2bec7b7bf82c6fe3681b5b2f0" %}
+{% set name = "scikit-beam" %}
+{% set version = "0.0.16" %}
+{% set sha256 = "9f832aadc084089c2a4b9ef2038ec1b692f5404e3ab5b7d0a9fe50dc84446147" %}
 
 package:
-  name: scikit-beam
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/scikit-beam/scikit-beam/archive/v{{ version }}.tar.gz
-  fn: scikit-beam-v{{ version }}.tar.gz
+  url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
+  fn: {{ name }}-v{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    # REMOVE THIS AFTER 0.0.15
-    - setup.py.patch
-    - include_license.patch
 
 build:
   number: 0
@@ -54,23 +51,10 @@ test:
     - skbeam.core.constants.xrf
     # has linux native library imports  # [not win]
     - skbeam.ext.ctrans  # [not win]
-  commands:
-    # Don't need to specify path due to the CONDA_DEFAULT_ENV env var being set inside of conda-build
-    # which is pointing to the test environment
-    # These next two lines are currently failing due to an API change from conda-build 1.21.* -> 2.0.*
-    #- conda inspect linkages scikit-beam  # [not win]
-    #- conda inspect objects scikit-beam  # [osx]
 
 about:
-  home: http://scikit-beam.github.io/scikit-beam/
+  home: http://scikit-beam.github.io/scikit-beam
   license: BSD 3-Clause
   summary: Data analysis algorithms for X-Ray, Neutron and Electron sciences
   license_file: LICENSE
   license_family: BSD
-
-extra:
-  recipe-maintainers:
-    - ericdill
-    - licode
-    - tacaswell
-    - CJ-Wright
