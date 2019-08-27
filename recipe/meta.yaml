@@ -1,17 +1,17 @@
 {% set name = "scikit-beam" %}
 {% set version = "0.0.17" %}
-{% set sha256 = "2c59dab3b6058e6e61df5d5fd95b49518ee196c9b572f2885b6fbf8eec58cb42" %}
+{% set sha256 = "a6f73188d427d0a10bd1d21a8377ce794f15107e1c3a202b266c52727d8e37ad" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<36]
   script:
     - python setup.py build_ext -i
