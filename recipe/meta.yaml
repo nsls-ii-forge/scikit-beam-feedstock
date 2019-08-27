@@ -1,6 +1,6 @@
 {% set name = "scikit-beam" %}
-{% set version = "0.0.16" %}
-{% set sha256 = "9f832aadc084089c2a4b9ef2038ec1b692f5404e3ab5b7d0a9fe50dc84446147" %}
+{% set version = "0.0.17" %}
+{% set sha256 = "2c59dab3b6058e6e61df5d5fd95b49518ee196c9b572f2885b6fbf8eec58cb42" %}
 
 package:
   name: {{ name|lower }}
@@ -30,7 +30,7 @@ requirements:
     - six
   run:
     - python
-    - lmfit =0.8.3
+    - lmfit >=0.8.3
     - scikit-image
     - scipy
     - six
