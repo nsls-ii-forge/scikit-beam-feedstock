@@ -30,7 +30,7 @@ requirements:
     - six
   run:
     - python
-    - lmfit >=0.9.13 
+    - lmfit >=0.8.3
     - scikit-image
     - scipy
     - six
