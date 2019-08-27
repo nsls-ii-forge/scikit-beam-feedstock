@@ -1,6 +1,6 @@
 {% set name = "scikit-beam" %}
-{% set version = "0.0.17" %}
-{% set sha256 = "a6f73188d427d0a10bd1d21a8377ce794f15107e1c3a202b266c52727d8e37ad" %}
+{% set version = "0.0.18" %}
+{% set sha256 = "91dbb898d6103c08a8e1c08b22dc8a060daf395664c09c50b88f801d9aeb83ec" %}
 
 package:
   name: {{ name|lower }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   skip: true  # [py<36]
   script:
     - python setup.py build_ext -i
