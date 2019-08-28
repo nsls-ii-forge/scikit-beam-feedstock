@@ -51,6 +51,7 @@ test:
     # has linux native library imports  # [not win]
     - skbeam.ext.ctrans  # [not win]
   requires:
+    - nose
     - pytest
   commands:
     - pytest -vvvv $SP_DIR/skbeam/
