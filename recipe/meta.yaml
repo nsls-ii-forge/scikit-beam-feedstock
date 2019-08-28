@@ -55,7 +55,7 @@ test:
   source_files:
     - test*.py
   commands:
-    - pytest -vvvv --pyargs skbeam.tests
+    - pytest -vvvv $PREFIX/lib/python3.6/site-packages/skbeam/
 
 about:
   home: http://scikit-beam.github.io/scikit-beam
