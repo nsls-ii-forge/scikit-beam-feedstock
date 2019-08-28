@@ -52,10 +52,8 @@ test:
     - skbeam.ext.ctrans  # [not win]
   requires:
     - pytest
-  source_files:
-    - test*.py
   commands:
-    - pytest -vvvv $PREFIX/lib/python3.6/site-packages/skbeam/
+    - pytest -vvvv $SP_DIR/skbeam/
 
 about:
   home: http://scikit-beam.github.io/scikit-beam
