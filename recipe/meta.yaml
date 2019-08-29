@@ -56,7 +56,8 @@ test:
     - nose
     - pytest
   commands:
-    - pytest -vvvv {{ SP_DIR }}/skbeam/
+    - pytest -vvvv $SP_DIR/skbeam/  # [not win]
+    - pytest -vvvv %SP_DIR%\skbeam\  # [win]
 
 about:
   home: http://scikit-beam.github.io/scikit-beam
