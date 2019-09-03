@@ -57,7 +57,8 @@ test:
     - pytest
   commands:
     - pytest -vvvv $SP_DIR/skbeam/  # [not win]
-    - pytest -vvvv %SP_DIR%\skbeam\  # [win]
+    # Skipping full testing on Windows for now due to the known issue with ctrans (#418)
+    # - pytest -vvvv %SP_DIR%\skbeam\  # [win]
 
 about:
   home: http://scikit-beam.github.io/scikit-beam
