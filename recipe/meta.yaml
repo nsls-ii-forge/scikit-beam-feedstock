@@ -1,13 +1,13 @@
 {% set name = "scikit-beam" %}
-{% set version = "0.0.17" %}
-{% set sha256 = "2c59dab3b6058e6e61df5d5fd95b49518ee196c9b572f2885b6fbf8eec58cb42" %}
+{% set version = "0.0.18" %}
+{% set sha256 = "91dbb898d6103c08a8e1c08b22dc8a060daf395664c09c50b88f801d9aeb83ec" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
@@ -29,7 +29,9 @@ requirements:
     - six
   run:
     - python
+    - fabio
     - lmfit >=0.8.3
+    - pyfai
     - scikit-image
     - scipy
     - six
@@ -50,6 +52,13 @@ test:
     - skbeam.core.constants.xrf
     # has linux native library imports  # [not win]
     - skbeam.ext.ctrans  # [not win]
+  requires:
+    - nose
+    - pytest
+  commands:
+    - pytest -vvvv $SP_DIR/skbeam/  # [not win]
+    # Skipping full testing on Windows for now due to the known issue with ctrans (#418)
+    # - pytest -vvvv %SP_DIR%\skbeam\  # [win]
 
 about:
   home: http://scikit-beam.github.io/scikit-beam
