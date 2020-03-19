@@ -21,6 +21,7 @@ requirements:
   build:
     - autoconf  # [osx]
     - {{ compiler('c') }}
+    - {{ compiler('c++') }}
   host:
     - python
     - cython
