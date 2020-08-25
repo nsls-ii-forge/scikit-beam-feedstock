@@ -1,6 +1,6 @@
 {% set name = "scikit-beam" %}
-{% set version = "0.0.22" %}
-{% set sha256 = "fca076211f245388a568010bcf4a10b036a8eb41e561f24c2a004fdb4910bf3e" %}
+{% set version = "0.0.23" %}
+{% set sha256 = "b698ec9fdfd8f33d08e49d6ee0e52bfda9afea0d0659b0ae21160d3a7b2f1c12" %}
 
 package:
   name: {{ name|lower }}
